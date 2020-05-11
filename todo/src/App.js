@@ -3,8 +3,6 @@ import { initialState, todoReducer } from './reducers/TodoReducer';
 import './App.css';
 import moment from "moment";
 
-
-
 function App () {
   const [ state, dispatch ] = useReducer( todoReducer, initialState );
   const [ taskInput, setTaskInput ] = useState( '' );
@@ -12,8 +10,6 @@ function App () {
   const handleChange = e => {
     setTaskInput( e.target.value );
   };
-
-
 
   return (
 
@@ -24,6 +20,7 @@ function App () {
       </div>
 
       <header className="App-header ">
+
         { state.map( task =>
           <div className="displayTask" key={ task.id }
             onClick={ () => dispatch( { type: 'TOGGLE_TASK', payload: task.id } ) }>
@@ -34,22 +31,22 @@ function App () {
                     { task.item }
                   </span>
                   <div className="completed">Completed on:
-                  <i className="fas fa-check"> </i>
-                    { moment( Date.now() ).format( 'lll' ) }
+                  {/* { <i className="fa-clipboard-check"></i> } */ }
+                    { moment( Date.now() ).format( 'LLL' ) }
                   </div>
-                </span>
-                :
-                <span>{ task.item }</span>
+                </span> : <span>{ task.item }</span>
             }
           </div>
         ) }
 
         <div className="inputButtons">
+          <br />
+
           <input
             type="text"
             name="addtask"
-            maxLength="30"
-            placeholder="Task to be added"
+            maxLength="50"
+            placeholder="add task here"
             value={ taskInput }
             onChange={ handleChange }
           />
@@ -67,11 +64,8 @@ function App () {
           </button>
 
         </div>
-
       </header>
-
     </div>
   );
 }
-
 export default App;

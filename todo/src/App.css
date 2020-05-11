@@ -36,3 +36,9 @@
     transform: rotate(360deg);
   }
 }
+
+/* .fa-check:before {
+  content: "\f14a"; } */
+
+  .fa-clipboard-check:before {
+  content: "\f46c"; }

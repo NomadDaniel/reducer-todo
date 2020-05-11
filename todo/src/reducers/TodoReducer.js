@@ -1,40 +1,28 @@
 export const initialState = [
   {
-    item: 'breath and move correctly',
+    item: 'Drink 3 full bottles of water',
     completed: false,
-    id: 3892987589
+    id: 2458963487
   },
   {
-    item: 'drink enough water to pee clear by noon',
+    item: '10x10x10 lifting routine',
     completed: false,
-    id: 3892987590
-  },
-  {
-    item: 'lift heavy stuff repeatedly, enough to sweat',
-    completed: false,
-    id: 3892987591
+    id: 2458963486
   }
 ];
-
 
 // ----------------- ADD_TASK  ----------------- //
 export const todoReducer = ( state, action ) => {
   switch ( action.type ) {
     case "ADD_TASK":
-      if ( action.payload ) {
-        return [
-          ...state,
-          {
-            item: action.payload,
-            completed: false,
-            id: new Date()
-          }
-        ];
-      }
-      // --------------------------------------- //
-
-      break;
-
+      return [
+        ...state,
+        {
+          item: action.payload,
+          completed: false,
+          id: new Date().getUTCMilliseconds()
+        }
+      ];
 
     // ----------------- TOGGLE_TASK  ----------------- //
     case "TOGGLE_TASK":
@@ -46,9 +34,8 @@ export const todoReducer = ( state, action ) => {
           };
         }
         return task;
-      } );
-    // --------------------------------------- //
-
+      }
+      );
 
     // ----------------- CLEAR_COMPLETED ----------------- //
     case "CLEAR_COMPLETED":
@@ -56,7 +43,5 @@ export const todoReducer = ( state, action ) => {
 
     default:
       return state;
-    // --------------------------------------- //
-
   };
 };
